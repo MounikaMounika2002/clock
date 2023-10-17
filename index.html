@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=DM+Serif+Display&family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("clock.jpg");
+  
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(3px);
+  
+  /* Full height */
+  height: 100%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color:white;
+  font-weight: bolder;
+  border: 10px solid #111110;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+font-family: 'DM Serif Display', serif;
+}
+.unit{
+    font-size: small;
+    color: rgb(153, 154, 156);
+}
+</style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<div class="bg-text">
+  <span id="hrs">00</span>
+  <span class="unit">hours</span>
+  <span>:</span>
+  <span id="mins">00</span>
+  <span class="unit">minutes</span>
+
+  <span>:</span>
+  <span id="secs">00</span>
+  <span class="unit">seconds</span>
+
+</div>
+<script>
+    setInterval(()=>{
+        currenttime=new Date()
+        let hrs=document.getElementById("hrs")
+        hrs.innerHTML=currenttime.getHours()<10?"0":""+currenttime.getHours()
+        let mins=document.getElementById("mins")
+        mins.innerHTML=(currenttime.getMinutes()<10?"0":"")+currenttime.getMinutes()
+        let secs=document.getElementById("secs")
+        secs.innerHTML=(currenttime.getSeconds()<10?"0":"")+currenttime.getSeconds()
+    })
+</script>
+</body>
+</html>
